@@ -6,4 +6,12 @@ import { Injectable } from '@angular/core';
 export class DatabaseService {
 
   constructor() { }
+
+  /**
+   * return an array of posts
+   */
+  getPosts(): any[] {
+    //TODO implement
+    return [];
+  }
 }
