@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-forum',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+  posts: any[] = [];
 
+  constructor( private database:DatabaseService ){}
+
+  ngOnInit(): void {
+    this.database.getPosts();
+  }
 }
