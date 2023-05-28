@@ -92,7 +92,7 @@ def new_post():
     ref: https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/
   '''
   body = request.json
-  print( body )
+  #print( body )        #for testing, comment out later
 
   db.posts.insert_one(
     body,
