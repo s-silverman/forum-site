@@ -1,10 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
-
 /*
-  make width 95% of container's width, center content
- */
+  Global CSS style sheet
+*/
+
+/* make width 95% of container's width, center */
 .nested{
   width: 95%;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* display content in a row where items are evenly spaced */
+.spaced-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  justify-content: space-between;
 }
