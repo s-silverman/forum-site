@@ -1,3 +1,8 @@
+/**
+ * New Post page TypeScript
+ * @author Sydney Silverman
+*/
+
 import { Component } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 
@@ -12,6 +17,6 @@ export class ForumComponent {
   constructor( private database:DatabaseService ){}
 
   ngOnInit(): void {
-    this.database.getPosts();
+    this.posts = this.database.getPosts();
   }
 }

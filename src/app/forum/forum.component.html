@@ -2,4 +2,26 @@
   Forum page HTML
   author: Sydney Silverman
 -->
-<h1>Forum</h1>
+
+<div class="nested">
+
+  <div class="spaced-row">
+    <h1>Forum</h1>
+    <a mat-raised-button routerLink="/newPost" color="primary">Post</a>
+  </div>
+
+  <div id="post-container" class="nested">
+    <div *ngFor="let post of posts">
+
+      <!-- display author and datetime in a row with author on the far left and datetime on the far right -->
+      <div>
+        <h2>{{post.author}}</h2>
+        <p>{{post.datetime}}</p>
+      </div>
+      
+      <p>{{post.message}}</p>
+      
+    </div>
+  </div>
+  
+</div>
