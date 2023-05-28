@@ -43,7 +43,7 @@ export class NewpostComponent {
     let minutes = '' + date.getMinutes();
     if( minutes.length < 2 ){ minutes = '0' + minutes }   //if single digit, add 0 before
   
-    let datetime = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${hours}:${minutes}${flag}`;  // MM-DD-YYYY HH:mm
+    let datetime = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} ${hours}:${minutes}${flag}`;  // MM-DD-YYYY HH:mm
 
     this.database.newPost( name, message, datetime );
   }
