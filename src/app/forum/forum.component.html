@@ -7,21 +7,27 @@
 
   <div class="spaced-row">
     <h1>Forum</h1>
-    <a mat-raised-button routerLink="/newPost" color="primary">Post</a>
+    <div>
+      <a mat-raised-button class="button" routerLink="/newPost" color="primary">Post</a>
+      <button mat-raised-button class="button" (click)="refresh()" color="primary">Refresh</button>
+    </div>
+    
   </div>
 
+  <!-- posts -->
   <div id="post-container" class="nested">
-    <div *ngFor="let post of posts">
+    <mat-card *ngFor="let post of posts">
 
       <!-- display author and datetime in a row with author on the far left and datetime on the far right -->
-      <div>
+      <div class="spaced-row">
         <h2>{{post.name}}</h2>
         <p>{{post.datetime}}</p>
       </div>
       
+      <!-- display post message -->
       <p>{{post.message}}</p>
 
-    </div>
+    </mat-card>
   </div>
   
 </div>

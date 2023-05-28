@@ -1,0 +1,28 @@
+/*
+  Forum page CSS stylesheet
+  author: Sydney Silverman
+*/
+
+h2{
+  font-size: large;
+}
+
+.button{
+  margin-left: 5px;
+}
+
+mat-select{
+  margin-right: 15px;
+}
+#SORT_BY{
+  width: 170px;
+}
+#ORDER{
+  width: 150px;
+}
+
+mat-card{
+  padding: 5px 15px 5px 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
