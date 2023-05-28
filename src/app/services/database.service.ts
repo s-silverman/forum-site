@@ -10,10 +10,9 @@ export class DatabaseService {
   constructor() { }
 
   /**
-   * return an array of posts
+   * return all posts
    */
   getPosts(): Promise<any> {
-    //TODO implement
     return fetch( this.serverURL + "/getPosts", 
     {
       method: 'GET',
