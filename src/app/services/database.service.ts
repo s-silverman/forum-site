@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class DatabaseService {
 
+  flaskEndpoint="http://localhost:4200/";
+
   constructor() { }
 
   /**
@@ -13,5 +15,16 @@ export class DatabaseService {
   getPosts(): any[] {
     //TODO implement
     return [];
+  }
+
+  getAllPosts(): Promise<any>{
+    return fetch(this.flaskEndpoint + "/test",
+    {
+      method: 'GET',
+      headers: {
+        'Conent-Type': 'application/json',
+        'Access-Control-Request-Headers': '*'
+      }
+    });
   }
 }

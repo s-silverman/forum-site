@@ -12,6 +12,12 @@ export class ForumComponent {
   constructor( private database:DatabaseService ){}
 
   ngOnInit(): void {
-    this.database.getPosts();
+    this.database.getAllPosts().then(
+      (response) => response.json()
+    ).then(
+      (data) => {
+        this.posts = data['message'];
+      }
+    );
   }
 }
