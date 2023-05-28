@@ -21,6 +21,7 @@ import certifi
 
 ''' configuration '''
 app = Flask(__name__)   #create global flask app
+CORS( app )
 
 #read config.ini
 config = configparser.ConfigParser()
@@ -57,9 +58,10 @@ def home_page():
 
 
 @app.route("/getPosts")
+@cross_origin()
 def get_posts():
   '''
-    return all posts in database
+    return all posts in database without their ids
     ref: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
   '''
   query = {}
@@ -73,6 +75,14 @@ def get_posts():
   '''
 
   return posts
+
+
+@app.route("newPost")
+@cross_origin()
+def new_post():
+  '''
+    create a new post
+  '''
 
 @app.route("/test")
 def test():
