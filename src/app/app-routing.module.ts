@@ -7,7 +7,7 @@ import { NewpostComponent } from './newpost/newpost.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'forum', pathMatch: 'full'},
   { path: 'forum', component: ForumComponent },
   { path: 'newPost', component: NewpostComponent },
 
