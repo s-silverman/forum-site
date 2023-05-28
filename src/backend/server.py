@@ -68,16 +68,20 @@ def home_page():
 def get_posts():
   '''
     return all posts in database without their ids
-    ref: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+    refs: 
+      https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+      https://pymongo.readthedocs.io/en/stable/api/pymongo/cursor.html
   '''
+  count = db.posts.count_documents( {} )         #get total number of items in collection
+  #print(count)   #for testing purposes
 
-  posts = db.posts.find( {}, {"_id":False} )    #returns a pointer to results
-  print(posts)
-  '''
+  cursor = db.posts.find( {}, {"_id":False} )    #returns a pointer to results
+  #print(cursor)  #for testing purposes
+  
   posts = []
-  while( cursor.hasNext() ):
-    posts.append( cursor.next() )
-  '''
+  for x in range(count):
+    posts.append( cursor.next() )               #add all documents to array
+  
 
   return posts
 
