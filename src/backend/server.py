@@ -101,11 +101,12 @@ def new_post():
   return ""
 
 @app.route("/test")
+@cross_origin()
 def test():
   '''
     return a single posts in database
   '''
-  query = {'author':'Guy'}
+  query = {'name':'example'}
   post = db.posts.find_one( query, {"_id":False} )    #return post without id
 
   return post
