@@ -10,18 +10,33 @@
     <a mat-raised-button routerLink="/newPost" color="primary">Post</a>
   </div>
 
+  <!-- filter options -->
+  <div>
+    <mat-select id="SORT_BY" placeholder="Sort by">
+      <mat-option value="Date Posted">Date Posted</mat-option>
+      <mat-option value="Author Name">Author Name</mat-option>
+    </mat-select>
+
+    <mat-select id="ORDER" placeholder="Order">
+      <mat-option value="Ascending">Ascending</mat-option>
+      <mat-option value="Descending">Descending</mat-option>
+    </mat-select>
+  </div>
+
+  <!-- posts -->
   <div id="post-container" class="nested">
-    <div *ngFor="let post of posts">
+    <mat-card *ngFor="let post of posts">
 
       <!-- display author and datetime in a row with author on the far left and datetime on the far right -->
-      <div>
+      <div class="spaced-row">
         <h2>{{post.name}}</h2>
         <p>{{post.datetime}}</p>
       </div>
       
+      <!-- display post message -->
       <p>{{post.message}}</p>
 
-    </div>
+    </mat-card>
   </div>
   
 </div>

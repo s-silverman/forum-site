@@ -1,6 +1,4 @@
 ''' imports '''
-#import string
-
 #reading config file
 import configparser
 import os
@@ -37,7 +35,6 @@ app.config['DEBUG'] = True
 #network certificate
 certificate = certifi.where()
 
-
 #create pymongo instance
 def get_db():
   ''' Configuration '''
@@ -63,11 +60,12 @@ def home_page():
   return "<p>welcome to the server</p>"
 
 
+#get all posts
 @app.route("/getPosts")
 @cross_origin()
 def get_posts():
   '''
-    return all posts in database without their ids
+    return all posts in database without their ids or comments
     refs: 
       https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
       https://pymongo.readthedocs.io/en/stable/api/pymongo/cursor.html
@@ -75,7 +73,7 @@ def get_posts():
   count = db.posts.count_documents( {} )         #get total number of items in collection
   #print(count)   #for testing purposes
 
-  cursor = db.posts.find( {}, {"_id":False} )    #returns a pointer to results
+  cursor = db.posts.find( {}, {"_id":False, "comments":False} )    #returns a pointer to results
   #print(cursor)  #for testing purposes
   
   posts = []
@@ -84,6 +82,25 @@ def get_posts():
   
 
   return posts
+
+
+#get a single post
+@app.route("/getPost")
+@cross_origin()
+def get_post():
+  '''
+    return a single post
+    refs: 
+      https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+      https://pymongo.readthedocs.io/en/stable/api/pymongo/cursor.html
+  '''
+
+  query = {}
+  post = db.posts.find( query, {"_id":False} )    #returns a pointer to results
+  #print(cursor)  #for testing purposes
+  
+
+  return post
 
 #add new post
 @app.put("/newPost")
@@ -104,6 +121,7 @@ def new_post():
   
   return ""
 
+
 @app.route("/test")
 @cross_origin()
 def test():
@@ -115,6 +133,7 @@ def test():
 
   return post
 
-#main
+
+''' main '''
 if __name__ == "__main__":
   app.run()
