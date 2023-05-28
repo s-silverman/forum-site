@@ -70,10 +70,9 @@ def get_posts():
     return all posts in database without their ids
     ref: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
   '''
-  query = {}
 
-  posts = db.posts.find( query, {"_id":False} )    #returns a pointer to results
-
+  posts = db.posts.find( {}, {"_id":False} )    #returns a pointer to results
+  print(posts)
   '''
   posts = []
   while( cursor.hasNext() ):
