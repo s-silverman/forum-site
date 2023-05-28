@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class DatabaseService {
 
-  serverURL: string = "http://127.0.0.1:5000";  //local host
+  serverURL: string = "http://127.0.0.1:5000";  //local host, comment out when actually hosted
 
   constructor() { }
 
@@ -25,13 +25,23 @@ export class DatabaseService {
     })
   }
 
+  /**
+   * send new post to server to be saved in database
+   * <br>
+   * @param name        (string),   name of author
+   * @param message     (string),   message of post
+   * @param datetime    (string),   date and time posted
+   */
   newPost( name:string, message:string, datetime:string ): void {
+
+    //add name, message, and datetime to body of request
     const body = {
       name: name,
       message: message,
       datetime: datetime
     }
-    
+
+    //send put request
     fetch( this.serverURL + "/newPost",
     {
       method: 'PUT',

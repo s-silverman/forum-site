@@ -70,10 +70,9 @@ def get_posts():
     return all posts in database without their ids
     ref: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
   '''
-  query = {}
 
-  posts = db.posts.find( query, {"_id":False} )    #returns a pointer to results
-
+  posts = db.posts.find( {}, {"_id":False} )    #returns a pointer to results
+  print(posts)
   '''
   posts = []
   while( cursor.hasNext() ):
@@ -102,11 +101,12 @@ def new_post():
   return ""
 
 @app.route("/test")
+@cross_origin()
 def test():
   '''
     return a single posts in database
   '''
-  query = {'author':'Guy'}
+  query = {'name':'example'}
   post = db.posts.find_one( query, {"_id":False} )    #return post without id
 
   return post
