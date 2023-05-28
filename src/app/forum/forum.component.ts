@@ -17,6 +17,12 @@ export class ForumComponent {
   constructor( private database:DatabaseService ){}
 
   ngOnInit(): void {
-    this.posts = this.database.getPosts();
+    this.database.getPosts().then(
+      (response) => response.json()     //convert promise to json
+    ).then(
+      (data) => {
+        this.posts = data;              //data['something'] ???
+      }
+    )
   }
 }

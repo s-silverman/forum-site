@@ -1,4 +1,6 @@
 ''' imports '''
+#import string
+
 #reading config file
 import configparser
 import os
@@ -50,10 +52,13 @@ db = LocalProxy( get_db )
 
 
 ''' app routes  '''
-
-#app route
+#home
 @app.route("/")
 def home_page():
+  '''
+    homepage of backend server
+    display basic message
+  '''
   return "<p>welcome to the server</p>"
 
 
@@ -77,12 +82,23 @@ def get_posts():
   return posts
 
 
-@app.route("newPost")
+@app.put("/newPost")
 @cross_origin()
 def new_post():
   '''
     create a new post
   '''
+  body = request.json
+  #document = "".format()
+
+  print( body )
+
+  db.posts.insertOne(
+    body,
+    #{ writeConcern: document }
+  )
+  
+  return ""
 
 @app.route("/test")
 def test():
