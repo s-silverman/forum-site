@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class DatabaseService {
 
-  serverURL: string = "http://127.0.0.1:5000";  //local host, comment out when actually hosted
+  //serverURL: string = "http://127.0.0.1:5000";  //local host, comment out when actually hosted
+  serverURL: string = "http://100.24.20.95";      //ec2 hosted
 
   constructor() { }
 
