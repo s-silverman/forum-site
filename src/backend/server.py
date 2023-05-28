@@ -13,6 +13,7 @@ from flask_pymongo import PyMongo
 
 #CORS connection
 from flask_cors import CORS, cross_origin
+from pymongo import WriteConcern
 
 #something from mongodb tutorial
 from werkzeug.local import LocalProxy
@@ -81,21 +82,21 @@ def get_posts():
 
   return posts
 
-
+#add new post
 @app.put("/newPost")
 @cross_origin()
 def new_post():
   '''
-    create a new post
+    add a new post to database
+    throws "application must write bytes" error in console but *does* update database??
+    ref: https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/
   '''
   body = request.json
-  #document = "".format()
-
   print( body )
 
-  db.posts.insertOne(
+  db.posts.insert_one(
     body,
-    #{ writeConcern: document }
+    { WriteConcern: body }
   )
   
   return ""
