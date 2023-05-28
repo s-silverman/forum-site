@@ -16,6 +16,9 @@ export class ForumComponent {
 
   constructor( private database:DatabaseService ){}
 
+  /**
+   * upon initialization: get all posts from database
+   */
   ngOnInit(): void {
     this.database.getPosts().then(
       (response) => response.json()     //convert promise to json
@@ -24,5 +27,12 @@ export class ForumComponent {
         this.posts = data;              //data['something'] ???
       }
     )
+  }
+
+  /**
+   * reloads the page
+   */
+  refresh(): void {
+    window.location.reload();
   }
 }

@@ -1,7 +1,7 @@
 /*
   Global CSS style sheet
 */
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 /* make width 95% of container's width, center */
 .nested{
