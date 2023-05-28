@@ -80,27 +80,9 @@ def get_posts():
   for x in range(count):
     posts.append( cursor.next() )               #add all documents to array
   
-
+  posts.reverse()
   return posts
 
-
-#get a single post
-@app.route("/getPost")
-@cross_origin()
-def get_post():
-  '''
-    return a single post
-    refs: 
-      https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
-      https://pymongo.readthedocs.io/en/stable/api/pymongo/cursor.html
-  '''
-
-  query = {}
-  post = db.posts.find( query, {"_id":False} )    #returns a pointer to results
-  #print(cursor)  #for testing purposes
-  
-
-  return post
 
 #add new post
 @app.put("/newPost")
