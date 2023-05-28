@@ -30,7 +30,7 @@ config.read(os.path.abspath(os.path.join("config.ini")))
 
 #configure flask app
 app.config['MONGO_URI'] = config['Database']['DB_URI']
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 
 #network certificate
 certificate = certifi.where()
@@ -57,7 +57,7 @@ def home_page():
     homepage of backend server
     display basic message
   '''
-  return "<p>welcome to the server</p>"
+  return "<p>This is the backend server for our forum site<br>We hosted this with AWS EC2</p>"
 
 
 #get all posts
