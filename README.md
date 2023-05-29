@@ -1,7 +1,10 @@
 # ForumSite
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
-The website is hosted at [nupath.xyz](http://www.nupath.xyz/forum) using AWS S3, and our [backend server](http://100.24.20.95/) is hosted using AWS EC2.
+
+The website was made with Angular and hosted at [nupath.xyz](http://www.nupath.xyz/forum) using AWS S3. 
+
+We used MongoDB Atlas for our database and Flask for a [backend server](http://100.24.20.95/) which we hosted using AWS EC2.
 
 ## Development server
 
